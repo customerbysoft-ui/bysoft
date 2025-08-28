@@ -128,9 +128,73 @@
       align-items: center;
     }
 
-    .logo i {
-      margin-right: 10px;
-      font-size: 2rem;
+    .logo-icon {
+      width: 45px;
+      height: 45px;
+      margin-right: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .logo-b {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 32px;
+      color: var(--primary);
+      position: relative;
+      z-index: 2;
+      text-shadow: 0 0 15px rgba(0, 255, 255, 0.7);
+    }
+
+    .logo-circle {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border: 2px solid var(--primary);
+      border-radius: 50%;
+      box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+      animation: pulse 3s infinite alternate;
+    }
+
+    .logo-circle::before, .logo-circle::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border: 1px solid var(--primary);
+      border-radius: 50%;
+      opacity: 0.6;
+    }
+
+    .logo-circle::before {
+      transform: scale(1.2);
+      animation: rotate 15s linear infinite;
+    }
+
+    .logo-circle::after {
+      transform: scale(1.4);
+      animation: rotate 20s linear infinite reverse;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 15px rgba(0, 255, 255, 0.5); }
+      100% { box-shadow: 0 0 25px rgba(0, 255, 255, 0.8), 0 0 45px rgba(0, 255, 255, 0.6); }
+    }
+
+    @keyframes rotate {
+      0% { transform: scale(1.2) rotate(0deg); }
+      100% { transform: scale(1.2) rotate(360deg); }
+    }
+
+    .logo-text {
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
     }
 
     .nav-links {
@@ -854,6 +918,19 @@
       .service-box {
         padding: 20px;
       }
+      
+      .logo-icon {
+        width: 35px;
+        height: 35px;
+      }
+      
+      .logo-b {
+        font-size: 26px;
+      }
+      
+      .logo {
+        font-size: 1.5rem;
+      }
     }
   </style>
 </head>
@@ -862,7 +939,13 @@
 
   <!-- Navigation -->
   <nav class="navbar">
-    <a href="#" class="logo"><i class="fas fa-code"></i> BYSOFT</a>
+    <a href="#" class="logo">
+      <div class="logo-icon">
+        <div class="logo-circle"></div>
+        <div class="logo-b">B</div>
+      </div>
+      <span class="logo-text">BYSOFT</span>
+    </a>
     <ul class="nav-links">
       <li><a href="#home">Home</a></li>
       <li><a href="#about">About</a></li>
