@@ -343,7 +343,7 @@ Keeps your original design the same. Adds:
       </div>
       <div class="contact-form">
         <!-- Updated: working POST to send-mail.php, names added, honeypot included -->
-        <form id="projectForm" action="send-mail.php" method="POST" novalidate>
+        <form id="https://formspree.io/f/mkgdqdaj"POST" novalidate>
           <input type="text" name="_hp" style="display:none" tabindex="-1" autocomplete="off"> <!-- honeypot -->
           <div class="form-group"><input type="text" name="name" class="form-control" placeholder="Your Name" required></div>
           <div class="form-group"><input type="email" name="email" class="form-control" placeholder="Your Email" required></div>
