@@ -343,34 +343,56 @@ Keeps your original design the same. Adds:
       </div>
       <div class="contact-form">
         <!-- Updated: working POST to send-mail.php, names added, honeypot included -->
-        <form id="https://formspree.io/f/mkgdqdaj"POST" novalidate>
-          <input type="text" name="_hp" style="display:none" tabindex="-1" autocomplete="off"> <!-- honeypot -->
-          <div class="form-group"><input type="text" name="name" class="form-control" placeholder="Your Name" required></div>
-          <div class="form-group"><input type="email" name="email" class="form-control" placeholder="Your Email" required></div>
-          <div class="form-group"><input type="tel" name="phone" class="form-control" placeholder="Your Phone"></div>
-          <div class="form-group">
-            <select name="service" class="form-control" required>
-              <option value="" disabled selected>Select Service</option>
-              <option value="web-development">Website Development</option>
-              <option value="wordpress">WordPress Website</option>
-              <option value="ecommerce">E-Commerce Store</option>
-              <option value="seo">SEO Optimization</option>
-              <option value="design">UI/UX Design</option>
-              <option value="hosting">Web Hosting</option>
-            </select>
-          </div>
-          <div class="form-group"><textarea name="message" class="form-control" placeholder="Project Details" required></textarea></div>
-          <div class="form-note">By submitting, you agree to be contacted by Bysoft.</div>
-          <button type="submit" class="btn">Send Message</button>
-        </form>
-      </div>
-    </div>
-    <div class="buttons" style="margin-top: 40px; text-align: center;">
-      <a href="tel:7834980726" class="btn">📞 Call Now</a>
-      <a href="https://wa.me/917834980726" class="btn" target="_blank">💬 WhatsApp Chat</a>
-      <a href="mailto:customerbysoft@gmail.com" class="btn">✉️ Email Us</a>
-    </div>
-  </section>
+        <form action="https://formspree.io/f/mkgdqdaj" method="POST" class="contact-form">
+  <div class="form-group">
+    <input type="text" name="name" placeholder="Your Name" class="form-control" required>
+  </div>
+
+  <div class="form-group">
+    <input type="email" name="email" placeholder="Your Email" class="form-control" required>
+  </div>
+
+  <div class="form-group">
+    <input type="text" name="phone" placeholder="Your Phone" class="form-control">
+  </div>
+
+  <div class="form-group">
+    <textarea name="message" placeholder="Write your message..." class="form-control" required></textarea>
+  </div>
+
+  <button type="submit" class="btn">Send Message</button>
+
+  <!-- Success Message (Auto Appears After Submit) -->
+  <p id="form-status" style="color:#0ff; margin-top:10px; display:none;">Message sent successfully!</p>
+</form>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.querySelector("form[action='https://formspree.io/f/mkgdqdaj']");
+  const status = document.getElementById("form-status");
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    const data = new FormData(form);
+    const response = await fetch(form.action, {
+      method: form.method,
+      body: data,
+      headers: { 'Accept': 'application/json' }
+    });
+
+    if (response.ok) {
+      status.style.display = "block";
+      status.innerHTML = "✔ Message sent successfully!";
+      form.reset();
+    } else {
+      status.style.display = "block";
+      status.innerHTML = "❌ Error sending message. Try again.";
+    }
+  }
+
+  form.addEventListener("submit", handleSubmit);
+});
+</script>
 
   <!-- Footer -->
   <footer>
