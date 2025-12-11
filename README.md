@@ -394,6 +394,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 </script>
 
+
   <!-- Footer -->
   <footer>
     <div class="footer-content">
